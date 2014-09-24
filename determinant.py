@@ -3,9 +3,9 @@ import copy
 
 def det(matrix):
     determinant = 0
-    for row in matrix:
-        if len(row) != len(matrix):
+    if is_square(matrix):
             raise ValueError('Not a square matrix')
+    
     if len(matrix) == 2:
         return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]
     else:
@@ -22,4 +22,9 @@ def sub_matrix(index, matrix):
         row.pop(index)
     return new_matrix
 
+def is_square(matrix):
+    for row in matrix:
+        if len(row) != len(matrix):
+            return False
+    return True
 
